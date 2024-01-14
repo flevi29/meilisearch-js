@@ -1,6 +1,6 @@
-import { MeiliSearchCommunicationError } from './meilisearch-communication-error'
-import { MeiliSearchApiError } from './meilisearch-api-error'
-import { FetchError } from '../types'
+import { MeiliSearchCommunicationError } from './meilisearch-communication-error.js'
+import { MeiliSearchApiError } from './meilisearch-api-error.js'
+import type { FetchError } from '../types/index.js'
 
 async function httpResponseErrorHandler(response: Response): Promise<Response> {
   if (!response.ok) {

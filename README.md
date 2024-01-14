@@ -90,7 +90,7 @@ const client = new MeiliSearch({
 Usage in an HTML (or alike) file:
 
 ```html
-<script src='https://cdn.jsdelivr.net/npm/meilisearch@latest/dist/bundles/meilisearch.umd.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/meilisearch@latest/dist/bundles/meilisearch.umd.min.js'></script>
 <script>
   const client = new MeiliSearch({
     host: 'http://127.0.0.1:7700',

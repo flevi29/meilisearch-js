@@ -1,11 +1,12 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "allowJs": false,
-    "noEmit": false,
-    "emitDeclarationOnly": true,
-    "incremental": true
+    "incremental": true,
+    "declaration": true,
+    // @TODO: No source maps here, because this is for bundler
+    "declarationMap": true,
+    "declarationDir": "./dist/types",
+    "outDir": "./dist/esm/"
   },
-  "include": ["src"],
-  "exclude": ["tests", "examples", "*.js", "scripts"]
+  "include": ["src"]
 }

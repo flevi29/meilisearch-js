@@ -1,5 +1,5 @@
-import { MeiliSearchErrorInfo } from '../types'
-import { MeiliSearchError } from './meilisearch-error'
+import type { MeiliSearchErrorInfo } from '../types/index.js'
+import { MeiliSearchError } from './meilisearch-error.js'
 
 const MeiliSearchApiError = class extends MeiliSearchError {
   httpStatus: number

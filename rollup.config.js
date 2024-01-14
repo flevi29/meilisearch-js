@@ -1,48 +1,61 @@
 // @TODO: Remove once eslint improvements merged
 /* eslint-disable */
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
-const { default: swc } = require('@rollup/plugin-swc')
-const { default: terser } = require('@rollup/plugin-terser')
 const {
-  browser: BROWSER_OUT,
-  main: CJS,
-  module: ESM,
-} = require('./package.json')
+  swc,
+  defineRollupSwcOption,
+  minify,
+  defineRollupSwcMinifyOption,
+} = require('rollup-plugin-swc3')
+const { jsdelivr: JSDELIVR_OUT, main: CJS } = require('./package.json')
 
 // @TODO: Research the purposes of minification and how it's supposed to be used
-//        Is there a point to having a .min as well as the main thing without directly exporting it?
-//        Do I just use tsc to compile and export for Node.js?
-//        Does UMD have any use for us, should we transpile to UMD?
+//        - JSDELIVR checks for *.min.js files from *.js files
+//        - If we have .min.js by default does it still try to minify it?
+//        - Does it help with sourcemaps to publish both minified and un-minified? Nope.
 
-// @TODO In conclusion:
-// 1. TSC for type-checking and generating types
-// 2. Rollup with SWC to generate UMD that only targets browsers
-// 3. Rollup with SWC that targets Node.js for CJS and ESM (ES2022)
-// ?. Maybe do make ESM a bundler version, and transpile that with TSC, only
+// @TODO: Sourcemaps
+//        - Should we publish sourcemaps with the minified bundle? Yes.
+//        - Should we publish sourcemaps otherwise for CJS and ESM? Only for
+//          CJS, which will also be imported by Node.js.
+
+// @TODO: https://esbuild.github.io/api/#main-fields-for-package-authors
+
+// @TODO: Does UMD have any use for us, should we transpile to UMD?
+//        Yeah, whatever, UMD is fine.
+
+// @TODO: Make a build script for tsc that doesn't do incremental, s owe don't publish tsbuildinfo
+//        or find another solution so we don't publish it
+
+// (@TODO Rewrite this a little?) Maybe do make ESM a bundler version, and transpile that with TSC, only
 //    accessible through "exports", while CJS will also be imported (this also
 //    prevents the dual package hazard https://nodejs.org/api/packages.html#dual-package-hazard)
 
 const IS_PROD = process.env.NODE_ENV === 'production'
 
-// @TODO Im confused, we are importing and then using module.exports
-//       rollup transpiles config that's why this works but we should stay consistent
 /** @type {import('rollup').RollupOptions[]} */
 module.exports = [
-  // browser-friendly UMD build
   {
     input: 'src/browser.ts',
-    external: 'cross-fetch/polyfill',
+    external: ['cross-fetch/polyfill'],
     output: {
+      // All Meilisearch exports will be available on global variable `window`
       name: 'window',
+      // If `window` already exists (like in browsers), don't overwrite it
       extend: true,
-      file: BROWSER_OUT,
+      file: JSDELIVR_OUT,
       format: 'umd',
-      // This source map can only be useful for local tests
-      sourcemap: !IS_PROD,
+      sourcemap: true,
     },
     plugins: [
       nodeResolve({ extensions: '.ts' }),
-      swc({ swc: { env: { targets: 'last 2 versions, ie >= 11' } } }),
+      swc(
+        defineRollupSwcOption({
+          env: { targets: 'last 2 versions, ie >= 11' },
+          jsc: { externalHelpers: true },
+          sourceMaps: true,
+        })
+      ),
       // @TODO Do we need this? It generates a slightly longer code seemingly, but it doesn't seem to help
       //       especially considering that the depended on package is not even inlined, stays a require
       // commonjs({
@@ -51,59 +64,29 @@ module.exports = [
       // nodePolyfills
       // @TODO We have no JSONs used in src, this is not needed, remove
       // json(),
-      IS_PROD ? terser() : {},
+      IS_PROD ? minify(defineRollupSwcMinifyOption({ sourceMap: true })) : {},
     ],
   },
-
-  // @TODO While this is meant for bundlers it still generates down-leveled code,
-  //       down-leveled code cannot be up-leveled again, the package user should
-  //       be able to bundle to whatever version of ES they want, so this "bundling"
-  //       version should be left as is without any down-leveling
-  // ES module (for bundlers) build.
   {
     input: 'src/index.ts',
-    external: 'cross-fetch/polyfill',
-    output: [
-      {
-        file: ESM,
-        format: 'es',
-        sourcemap: true,
-      },
-      {
-        file: CJS,
-        format: 'cjs',
-        sourcemap: true,
-      },
-    ],
+    external: ['cross-fetch/polyfill'],
+    output: {
+      file: CJS,
+      format: 'cjs',
+      sourcemap: true,
+    },
     plugins: [
       nodeResolve({ extensions: '.ts' }),
-      // Node.js 18 fully supports es2022 https://www.npmjs.com/package/@tsconfig/node18
-      swc({ swc: { jsc: { target: 'es2022' } } }),
-      // @TODO: There's no point in minifying Node.js code
-      // IS_PROD ? terser() : {}, // will minify the file in production mode
+      // Node.js 18 (Maintenance version at the time of writing) fully
+      // supports es2022 https://www.npmjs.com/package/@tsconfig/node18
+      // If people wish to use this with EOL Node.js versions they are welcome
+      // to transform the code, but ideally they should update Node.js
+      swc(
+        defineRollupSwcOption({
+          jsc: { target: 'es2022', externalHelpers: true },
+          sourceMaps: true,
+        })
+      ),
     ],
   },
-  // Common JS build (Node).
-  // Compatible only in a nodeJS environment.
-  // @TODO Rollup runs twice, once raw and once with NODE_ENV=true
-  //       1. That means CJS version gets created twice with no differences
-  //       2. Do we even need min versions of ESM? We probably only want a min version of something we want on unpkg like UMD?
-  //          It's still debatable whether we want UMD at all
-  // @TODO Also, it should not run twice, what's even the point we're not even using it separately, it always does the same thing
-  //       we could use https://rollupjs.org/configuration-options/#output-plugins for generating min
-  // @TODO This doesn't get a sourcemap but this is what's used in Node.js, so Node.js won't point to src
-  // {
-  //   input: 'src/index.ts',
-  //   external: ['cross-fetch', 'cross-fetch/polyfill'],
-  //   output: {
-  //     file: getOutputFileName(
-  //       // will add .min. in filename if in production env
-  //       resolve(ROOT, pkg.main),
-  //       env === 'production'
-  //     ),
-  //     exports: 'named',
-  //     format: 'cjs',
-  //   },
-  //   plugins: [nodeResolve({ extensions: '.ts' }), swc()],
-  // },
 ]

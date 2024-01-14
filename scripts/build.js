@@ -5,7 +5,7 @@ const { readFileSync, writeFileSync } = require('fs')
 const pkg = require('../package.json')
 
 const ROOT = resolve(__dirname, '..')
-const TYPES_ROOT_FILE = resolve(ROOT, normalize(pkg.typings))
+const TYPES_ROOT_FILE = resolve(ROOT, normalize(pkg.types))
 
 main()
 

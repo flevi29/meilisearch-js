@@ -1,6 +1,6 @@
-import { Client } from './client'
-import { Config, TokenSearchRules, TokenOptions } from '../types'
-import { Token } from '../token'
+import { Client } from './client.js'
+import type { Config, TokenSearchRules, TokenOptions } from '../types/index.js'
+import { Token } from '../token.js'
 
 class MeiliSearch extends Client {
   tokens: Token

@@ -1,4 +1,4 @@
-import { MeiliSearchError } from './meilisearch-error'
+import { MeiliSearchError } from './meilisearch-error.js'
 
 class MeiliSearchTimeOutError extends MeiliSearchError {
   constructor(message: string) {

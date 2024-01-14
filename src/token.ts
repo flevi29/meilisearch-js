@@ -1,6 +1,6 @@
-import { Config, TokenSearchRules, TokenOptions } from './types'
-import { MeiliSearchError } from './errors'
-import { validateUuid4 } from './utils'
+import type { Config, TokenSearchRules, TokenOptions } from './types/index.js'
+import { MeiliSearchError } from './errors/index.js'
+import { validateUuid4 } from './utils.js'
 
 function encode64(data: any) {
   return Buffer.from(JSON.stringify(data)).toString('base64')

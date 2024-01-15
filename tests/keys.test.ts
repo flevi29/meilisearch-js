@@ -1,12 +1,12 @@
-import MeiliSearch from '../src/browser'
-import { ErrorStatusCode } from '../src/types'
+import { MeiliSearch } from '../src/browser.js'
+import { ErrorStatusCode } from '../src/index.js'
 import {
   clearAllIndexes,
   config,
   getClient,
   getKey,
   HOST,
-} from './utils/meilisearch-test-utils'
+} from './utils/meilisearch-test-utils.js'
 
 beforeEach(async () => {
   await clearAllIndexes(config)

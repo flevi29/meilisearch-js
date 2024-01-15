@@ -1,1 +1,1 @@
-../../../dist/bundles/meilisearch.umd.js
+../../../dist/bundles/meilisearch.umd.min.js

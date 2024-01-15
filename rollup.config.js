@@ -1,13 +1,15 @@
-// @TODO: Remove once eslint improvements merged
-/* eslint-disable */
-const { nodeResolve } = require('@rollup/plugin-node-resolve')
-const {
+import { createRequire } from 'node:module'
+import { defineConfig } from 'rollup'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import {
   swc,
   defineRollupSwcOption,
   minify,
   defineRollupSwcMinifyOption,
-} = require('rollup-plugin-swc3')
-const { jsdelivr: JSDELIVR_OUT, main: CJS } = require('./package.json')
+} from 'rollup-plugin-swc3'
+const { jsdelivr: JSDELIVR_OUT, main: CJS } = createRequire(import.meta.url)(
+  './package.json'
+)
 
 // @TODO: Research the purposes of minification and how it's supposed to be used
 //        - JSDELIVR checks for *.min.js files from *.js files
@@ -21,9 +23,6 @@ const { jsdelivr: JSDELIVR_OUT, main: CJS } = require('./package.json')
 
 // @TODO: https://esbuild.github.io/api/#main-fields-for-package-authors
 
-// @TODO: Does UMD have any use for us, should we transpile to UMD?
-//        Yeah, whatever, UMD is fine.
-
 // @TODO: Make a build script for tsc that doesn't do incremental, s owe don't publish tsbuildinfo
 //        or find another solution so we don't publish it
 
@@ -33,8 +32,7 @@ const { jsdelivr: JSDELIVR_OUT, main: CJS } = require('./package.json')
 
 const IS_PROD = process.env.NODE_ENV === 'production'
 
-/** @type {import('rollup').RollupOptions[]} */
-module.exports = [
+export default defineConfig([
   {
     input: 'src/browser.ts',
     external: ['cross-fetch/polyfill'],
@@ -48,7 +46,6 @@ module.exports = [
       sourcemap: true,
     },
     plugins: [
-      nodeResolve({ extensions: '.ts' }),
       swc(
         defineRollupSwcOption({
           env: { targets: 'last 2 versions, ie >= 11' },
@@ -56,6 +53,7 @@ module.exports = [
           sourceMaps: true,
         })
       ),
+      nodeResolve(),
       // @TODO Do we need this? It generates a slightly longer code seemingly, but it doesn't seem to help
       //       especially considering that the depended on package is not even inlined, stays a require
       // commonjs({
@@ -76,17 +74,17 @@ module.exports = [
       sourcemap: true,
     },
     plugins: [
-      nodeResolve({ extensions: '.ts' }),
       // Node.js 18 (Maintenance version at the time of writing) fully
       // supports es2022 https://www.npmjs.com/package/@tsconfig/node18
       // If people wish to use this with EOL Node.js versions they are welcome
-      // to transform the code, but ideally they should update Node.js
+      // to transform the code, but ideally they should update their Node.js
       swc(
         defineRollupSwcOption({
           jsc: { target: 'es2022', externalHelpers: true },
           sourceMaps: true,
         })
       ),
+      nodeResolve(),
     ],
   },
-]
+])

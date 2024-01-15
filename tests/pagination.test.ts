@@ -1,4 +1,4 @@
-﻿import { ErrorStatusCode } from '../src/types'
+﻿import { ErrorStatusCode } from '../src/index.js'
 import {
   clearAllIndexes,
   config,
@@ -6,13 +6,13 @@ import {
   MeiliSearch,
   getClient,
   dataset,
-} from './utils/meilisearch-test-utils'
+} from './utils/meilisearch-test-utils.js'
 
 const index = {
   uid: 'movies_test',
 }
 
-jest.setTimeout(100 * 1000)
+import.meta.jest.setTimeout(100 * 1000)
 
 afterAll(() => {
   return clearAllIndexes(config)

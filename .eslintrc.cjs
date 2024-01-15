@@ -27,6 +27,7 @@ module.exports = {
     // https://prettier.io/docs/en/integrating-with-linters.html
     // https://github.com/prettier/eslint-config-prettier
     'prettier',
+    'plugin:@typescript-eslint/recommended',
   ],
   rules: {
     // @TODO: Remove this rule, as it's a style rule covered by prettier and

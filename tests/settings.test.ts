@@ -1,4 +1,4 @@
-import { ErrorStatusCode, Settings } from '../src/types'
+import { ErrorStatusCode, type Settings } from '../src/index.js'
 import {
   clearAllIndexes,
   config,
@@ -8,7 +8,7 @@ import {
   dataset,
   getKey,
   HOST,
-} from './utils/meilisearch-test-utils'
+} from './utils/meilisearch-test-utils.js'
 
 const index = {
   uid: 'movies_test',
@@ -18,7 +18,7 @@ const indexAndPK = {
   primaryKey: 'id',
 }
 
-jest.setTimeout(100 * 1000)
+import.meta.jest.setTimeout(100 * 1000)
 
 afterAll(() => {
   return clearAllIndexes(config)

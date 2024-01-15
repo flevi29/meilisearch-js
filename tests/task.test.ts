@@ -1,5 +1,5 @@
-import { ErrorStatusCode, TaskTypes, TaskStatus } from '../src/types'
-import { sleep } from '../src/utils'
+import { ErrorStatusCode, TaskTypes, TaskStatus } from '../src/index.js'
+import { sleep } from '../src/utils.js'
 import {
   clearAllIndexes,
   config,
@@ -7,7 +7,7 @@ import {
   MeiliSearch,
   getClient,
   dataset,
-} from './utils/meilisearch-test-utils'
+} from './utils/meilisearch-test-utils.js'
 
 const index = {
   uid: 'movies_test',
@@ -21,7 +21,7 @@ const index3 = {
   uid: 'movies_test2',
 }
 
-jest.setTimeout(100 * 1000)
+import.meta.jest.setTimeout(100 * 1000)
 
 afterAll(() => {
   return clearAllIndexes(config)

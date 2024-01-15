@@ -1,11 +1,11 @@
-import { ErrorStatusCode } from '../src/types'
+import { ErrorStatusCode } from '../src/index.js'
 import {
   clearAllIndexes,
   config,
   BAD_HOST,
   MeiliSearch,
   getClient,
-} from './utils/meilisearch-test-utils'
+} from './utils/meilisearch-test-utils.js'
 
 const indexNoPk = {
   uid: 'movies_test',

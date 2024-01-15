@@ -1,6 +1,12 @@
-import AbortController from 'abort-controller'
-import { ErrorStatusCode, MatchingStrategies } from '../src/types'
-import { EnqueuedTask } from '../src/enqueued-task'
+// ts-jest cannot resolve external dependencies for some reason
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { AbortController } from 'abort-controller'
+import {
+  type EnqueuedTask,
+  ErrorStatusCode,
+  MatchingStrategies,
+} from '../src/index.js'
 import {
   clearAllIndexes,
   config,
@@ -10,10 +16,11 @@ import {
   datasetWithNests,
   HOST,
   getKey,
-} from './utils/meilisearch-test-utils'
+} from './utils/meilisearch-test-utils.js'
 
 if (typeof fetch === 'undefined') {
-  require('cross-fetch/polyfill')
+  // @ts-expect-error idk man
+  await import('cross-fetch/polyfill')
 }
 
 const index = {
@@ -1009,7 +1016,7 @@ describe.each([
       'unreachable',
       {},
       {
-        // @ts-ignore qwe
+        // @ts-expect-error type mismatch @TODO fix
         signal: controller.signal,
       }
     )
@@ -1032,7 +1039,7 @@ describe.each([
       searchQuery,
       {},
       {
-        // @ts-ignore
+        // @ts-expect-error type mismatch @TODO fix
         signal: controllerA.signal,
       }
     )
@@ -1041,7 +1048,7 @@ describe.each([
       searchQuery,
       {},
       {
-        // @ts-ignore
+        // @ts-expect-error type mismatch @TODO fix
         signal: controllerB.signal,
       }
     )
@@ -1050,7 +1057,7 @@ describe.each([
       searchQuery,
       {},
       {
-        // @ts-ignore
+        // @ts-expect-error type mismatch @TODO fix
         signal: controllerC.signal,
       }
     )
@@ -1124,7 +1131,7 @@ describe.each([
   })
 })
 
-jest.setTimeout(100 * 1000)
+import.meta.jest.setTimeout(100 * 1000)
 
 afterAll(() => {
   return clearAllIndexes(config)

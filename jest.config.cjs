@@ -1,4 +1,6 @@
-/** @type {import('jest').Config} */
+// @TODO Remove this once merged with eslint updates
+// eslint-disable-next-line tsdoc/syntax
+/** @type {import('ts-jest').JestConfigWithTsJest} */
 const config = {
   rootDir: '.',
   testMatch: ['<rootDir>/tests/**/*.ts?(x)'],
@@ -6,20 +8,18 @@ const config = {
   testPathIgnorePatterns: ['meilisearch-test-utils', 'env'],
   collectCoverage: true,
   coverageThreshold: {
-    global: {
-      'ts-jest': {
-        tsConfig: '<rootDir>/tsconfig.json',
-      },
-    },
+    global: { 'ts-jest': { tsConfig: '<rootDir>/tsconfig.test.json' } },
   },
   watchPlugins: [
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
   ],
-  globalSetup: './jest-disable-built-in-fetch.js',
+  globalSetup: './jest-disable-built-in-fetch.cjs',
   projects: [
     {
-      preset: 'ts-jest',
+      preset: 'ts-jest/presets/default-esm',
+      moduleNameMapper: { '^(\\.{1,2}/.*)\\.js$': '$1' },
+      transform: { '^.+\\.ts$': ['ts-jest', { useESM: true }] },
       displayName: 'browser',
       testEnvironment: 'jsdom',
       testMatch: ['<rootDir>/tests/**/*.ts?(x)'],
@@ -30,7 +30,9 @@ const config = {
       ],
     },
     {
-      preset: 'ts-jest',
+      preset: 'ts-jest/presets/default-esm',
+      moduleNameMapper: { '^(\\.{1,2}/.*)\\.js$': '$1' },
+      transform: { '^.+\\.ts$': ['ts-jest', { useESM: true }] },
       displayName: 'node',
       testEnvironment: 'node',
       testMatch: ['<rootDir>/tests/**/*.ts?(x)'],

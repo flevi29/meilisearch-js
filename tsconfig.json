@@ -20,10 +20,8 @@
     // https://www.typescriptlang.org/docs/handbook/modules/reference.html#implied-and-enforced-options
     // https://www.typescriptlang.org/docs/handbook/modules/theory.html#module-resolution-for-libraries
     "module": "nodenext",
-    // https://www.typescriptlang.org/tsconfig/#isolatedModules
-    "isolatedModules": true,
-    // https://swc.rs/docs/migrating-from-tsc#verbatimmodulesyntax-true
-    // it's recommended when bundling
+    // https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax
+    // it's a must when using bundlers and for general compatibility
     "verbatimModuleSyntax": true,
     // @TODO: Remove as it's not all that useful these days, and just generates more unnecessary code
     //       just so we can `import crypto from "crypto"` instead of `import * as crypto from "crypto"`

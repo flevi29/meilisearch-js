@@ -119,12 +119,13 @@ class HttpRequests {
   }: {
     method: string
     url: string
-    params?: { [key: string]: any }
+    params?: Record<string, any>
     body?: any
     config?: Record<string, any>
   }) {
     if (typeof fetch === 'undefined') {
-      require('cross-fetch/polyfill')
+      // @ts-expect-error there are no definitions for the polyfill
+      await import('cross-fetch/polyfill')
     }
 
     const constructURL = new URL(url, this.url)

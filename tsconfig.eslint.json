@@ -11,9 +11,9 @@
     "tests/**/*.ts",
     "examples/**/*.js",
     "scripts/**/*.js",
-    "jest.config.js",
+    "jest.config.cjs",
     "rollup.config.js",
-    ".eslintrc.js",
+    ".eslintrc.cjs",
     "playgrounds/**/*.js",
     "playgrounds/**/*.ts"
   ]

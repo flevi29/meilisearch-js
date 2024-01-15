@@ -1,16 +1,19 @@
-import { MeiliSearch } from './utils/meilisearch-test-utils'
 import {
+  MeiliSearch,
   MeiliSearchError,
   MeiliSearchApiError,
   MeiliSearchCommunicationError,
   MeiliSearchTimeOutError,
-} from '../src/errors'
+} from '../src/index.js'
 import 'jest-fetch-mock'
-import fetchMock from 'jest-fetch-mock'
+// ts-jest cannot resolve external dependencies for some reason
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { default as fetchMock } from 'jest-fetch-mock'
 
 fetchMock.enableMocks()
 
-jest.setTimeout(100 * 1000)
+import.meta.jest.setTimeout(100 * 1000)
 
 describe('Test on updates', () => {
   beforeEach(() => {

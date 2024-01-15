@@ -1,5 +1,8 @@
-import { ErrorStatusCode, SearchResponse } from '../src/types'
-import { EnqueuedTask } from '../src/enqueued-task'
+import {
+  EnqueuedTask,
+  ErrorStatusCode,
+  type SearchResponse,
+} from '../src/index.js'
 import {
   clearAllIndexes,
   config,
@@ -7,7 +10,7 @@ import {
   MeiliSearch,
   getClient,
   datasetWithNests,
-} from './utils/meilisearch-test-utils'
+} from './utils/meilisearch-test-utils.js'
 
 const index = {
   uid: 'movies_test',
@@ -76,7 +79,7 @@ const dataset = [
   { id: 42, title: "The Hitchhiker's Guide to the Galaxy", genre: 'fantasy' },
 ]
 
-jest.setTimeout(100 * 1000)
+import.meta.jest.setTimeout(100 * 1000)
 
 afterAll(() => {
   return clearAllIndexes(config)

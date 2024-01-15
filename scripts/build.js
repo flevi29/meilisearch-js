@@ -1,29 +1,13 @@
 /** This file only purpose is to execute any build related tasks */
 
-const { resolve, normalize } = require('path')
-const { readFileSync, writeFileSync } = require('fs')
-const pkg = require('../package.json')
+import { createRequire } from 'node:module'
+import { fileURLToPath } from 'node:url'
+import { resolve, normalize } from 'node:path'
+import { readFileSync, writeFileSync } from 'node:fs'
+const pkg = createRequire(import.meta.url)('../package.json')
 
-const ROOT = resolve(__dirname, '..')
+const ROOT = resolve(fileURLToPath(import.meta.url), '../..')
 const TYPES_ROOT_FILE = resolve(ROOT, normalize(pkg.types))
-
-main()
-
-function main() {
-  writeDtsHeader()
-}
-
-function writeDtsHeader() {
-  const dtsHeader = getDtsHeader(
-    pkg.name,
-    pkg.version,
-    pkg.author,
-    pkg.repository.url,
-    pkg.devDependencies.typescript
-  )
-
-  prependFileSync(TYPES_ROOT_FILE, dtsHeader)
-}
 
 /**
  * @param {string} pkgName
@@ -59,3 +43,13 @@ function prependFileSync(path, data) {
     encoding: 'utf8',
   })
 }
+
+const dtsHeader = getDtsHeader(
+  pkg.name,
+  pkg.version,
+  pkg.author,
+  pkg.repository.url,
+  pkg.devDependencies.typescript
+)
+
+prependFileSync(TYPES_ROOT_FILE, dtsHeader)

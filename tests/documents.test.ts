@@ -1,4 +1,4 @@
-import { ErrorStatusCode, TaskStatus, TaskTypes } from '../src/types'
+import { ErrorStatusCode, TaskStatus, TaskTypes } from '../src/index.js'
 import {
   clearAllIndexes,
   config,
@@ -6,10 +6,10 @@ import {
   MeiliSearch,
   getClient,
   dataset,
-  Book,
+  type Book,
   getKey,
   HOST,
-} from './utils/meilisearch-test-utils'
+} from './utils/meilisearch-test-utils.js'
 
 const indexNoPk = {
   uid: 'movies_test',
@@ -19,7 +19,7 @@ const indexPk = {
   primaryKey: 'id',
 }
 
-jest.setTimeout(100 * 1000)
+import.meta.jest.setTimeout(100 * 1000)
 
 afterAll(() => {
   return clearAllIndexes(config)
@@ -98,7 +98,7 @@ describe('Documents tests', () => {
         })
 
         expect(
-          documents.results.find((x) => Object.keys(x).length !== 1)
+          documents.results.find((x: any) => Object.keys(x).length !== 1)
         ).toBeUndefined()
       })
 

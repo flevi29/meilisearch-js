@@ -1,5 +1,11 @@
-import { ErrorStatusCode, Health, Version, Stats, TaskTypes } from '../src'
-import { PACKAGE_VERSION } from '../src/package-version'
+import {
+  ErrorStatusCode,
+  type Health,
+  type Version,
+  type Stats,
+  TaskTypes,
+} from '../src/index.js'
+import { PACKAGE_VERSION } from '../src/package-version.js'
 import {
   clearAllIndexes,
   getKey,
@@ -8,7 +14,7 @@ import {
   MeiliSearch,
   BAD_HOST,
   HOST,
-} from './utils/meilisearch-test-utils'
+} from './utils/meilisearch-test-utils.js'
 
 const indexNoPk = {
   uid: 'movies_test',

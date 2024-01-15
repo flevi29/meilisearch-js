@@ -16,6 +16,7 @@
     "qdequele <quentin@meilisearch.com>"
   ],
   "license": "MIT",
+  "type": "module",
   "types": "./dist/types/index.d.ts",
   "main": "./dist/bundles/meilisearch.cjs.js",
   "module": "./dist/esm/index.js",
@@ -36,7 +37,7 @@
     "build:types": "tsc -p tsconfig.app.json",
     "watch": "rollup -c --watch",
     "postbuild": "yarn size && yarn typingsheader",
-    "test": "yarn clear_jest && jest --runInBand --verbose",
+    "test": "yarn clear_jest && node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --verbose",
     "types:watch": "nodemon --config nodemon.json",
     "types": "yarn tsc",
     "test:env:browser": "yarn build && yarn --cwd tests/env/express && yarn --cwd tests/env/express test",
@@ -48,7 +49,7 @@
     "test:env:nodejs": "yarn build && node tests/env/node/index.js && node tests/env/node/getting_started.js",
     "test:env:esm": "yarn --cwd tests/env/esm && yarn --cwd tests/env/esm start",
     "test:env:nitro-app": "yarn build && yarn --cwd tests/env/nitro-app test",
-    "size": "node scripts/file-size ./dist/bundles/meilisearch.umd.min.js",
+    "size": "node scripts/file-size.js ./dist/bundles/meilisearch.umd.min.js",
     "style": "yarn fmt && yarn lint",
     "style:fix": "yarn fmt:fix && yarn lint:fix",
     "fmt": "prettier -c ./**/*.{js,ts}",
@@ -73,7 +74,7 @@
     ]
   },
   "dependencies": {
-    "cross-fetch": "^3.1.6"
+    "cross-fetch": "^4.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.2.3",

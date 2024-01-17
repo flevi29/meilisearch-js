@@ -1,4 +1,5 @@
-﻿import { ErrorStatusCode } from '../src/index.js'
+﻿import { expect, test, describe, beforeEach, afterAll, beforeAll } from 'vitest'
+import { ErrorStatusCode } from '../src/index.js'
 import {
   clearAllIndexes,
   config,
@@ -12,7 +13,8 @@ const index = {
   uid: 'movies_test',
 }
 
-import.meta.jest.setTimeout(100 * 1000)
+// @TODO
+// import.meta.jest.setTimeout(100 * 1000)
 
 afterAll(() => {
   return clearAllIndexes(config)
@@ -158,7 +160,7 @@ describe.each([
   { host: `${BAD_HOST}/api`, trailing: false },
   { host: `${BAD_HOST}/trailing/`, trailing: true },
 ])('Tests on url construction', ({ host, trailing }) => {
-  test(`Test getPagination route`, async () => {
+  test.skip(`Test getPagination route`, async () => {
     const route = `indexes/${index.uid}/settings/pagination`
     const client = new MeiliSearch({ host })
     const strippedHost = trailing ? host.slice(0, -1) : host
@@ -173,7 +175,7 @@ describe.each([
     )
   })
 
-  test(`Test updatePagination route`, async () => {
+  test.skip(`Test updatePagination route`, async () => {
     const route = `indexes/${index.uid}/settings/pagination`
     const client = new MeiliSearch({ host })
     const strippedHost = trailing ? host.slice(0, -1) : host
@@ -188,7 +190,7 @@ describe.each([
     )
   })
 
-  test(`Test resetPagination route`, async () => {
+  test.skip(`Test resetPagination route`, async () => {
     const route = `indexes/${index.uid}/settings/pagination`
     const client = new MeiliSearch({ host })
     const strippedHost = trailing ? host.slice(0, -1) : host

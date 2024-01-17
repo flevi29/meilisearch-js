@@ -1,4 +1,852 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Test on settings > Admin key: Get default settings of an index 1`] = `
+{
+  "dictionary": [],
+  "displayedAttributes": [
+    "*",
+  ],
+  "distinctAttribute": null,
+  "faceting": {
+    "maxValuesPerFacet": 100,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [],
+  "nonSeparatorTokens": [],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "words",
+    "typo",
+    "proximity",
+    "attribute",
+    "sort",
+    "exactness",
+  ],
+  "searchableAttributes": [
+    "*",
+  ],
+  "separatorTokens": [],
+  "sortableAttributes": [],
+  "stopWords": [],
+  "synonyms": {},
+  "typoTolerance": {
+    "disableOnAttributes": [],
+    "disableOnWords": [],
+    "enabled": true,
+    "minWordSizeForTypos": {
+      "oneTypo": 5,
+      "twoTypos": 9,
+    },
+  },
+}
+`;
+
+exports[`Test on settings > Admin key: Get default settings of empty index with primary key 1`] = `
+{
+  "dictionary": [],
+  "displayedAttributes": [
+    "*",
+  ],
+  "distinctAttribute": null,
+  "faceting": {
+    "maxValuesPerFacet": 100,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [],
+  "nonSeparatorTokens": [],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "words",
+    "typo",
+    "proximity",
+    "attribute",
+    "sort",
+    "exactness",
+  ],
+  "searchableAttributes": [
+    "*",
+  ],
+  "separatorTokens": [],
+  "sortableAttributes": [],
+  "stopWords": [],
+  "synonyms": {},
+  "typoTolerance": {
+    "disableOnAttributes": [],
+    "disableOnWords": [],
+    "enabled": true,
+    "minWordSizeForTypos": {
+      "oneTypo": 5,
+      "twoTypos": 9,
+    },
+  },
+}
+`;
+
+exports[`Test on settings > Admin key: Reset settings 1`] = `
+{
+  "dictionary": [],
+  "displayedAttributes": [
+    "*",
+  ],
+  "distinctAttribute": null,
+  "faceting": {
+    "maxValuesPerFacet": 100,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [],
+  "nonSeparatorTokens": [],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "words",
+    "typo",
+    "proximity",
+    "attribute",
+    "sort",
+    "exactness",
+  ],
+  "searchableAttributes": [
+    "*",
+  ],
+  "separatorTokens": [],
+  "sortableAttributes": [],
+  "stopWords": [],
+  "synonyms": {},
+  "typoTolerance": {
+    "disableOnAttributes": [],
+    "disableOnWords": [],
+    "enabled": true,
+    "minWordSizeForTypos": {
+      "oneTypo": 5,
+      "twoTypos": 9,
+    },
+  },
+}
+`;
+
+exports[`Test on settings > Admin key: Reset settings of empty index 1`] = `
+{
+  "dictionary": [],
+  "displayedAttributes": [
+    "*",
+  ],
+  "distinctAttribute": null,
+  "faceting": {
+    "maxValuesPerFacet": 100,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [],
+  "nonSeparatorTokens": [],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "words",
+    "typo",
+    "proximity",
+    "attribute",
+    "sort",
+    "exactness",
+  ],
+  "searchableAttributes": [
+    "*",
+  ],
+  "separatorTokens": [],
+  "sortableAttributes": [],
+  "stopWords": [],
+  "synonyms": {},
+  "typoTolerance": {
+    "disableOnAttributes": [],
+    "disableOnWords": [],
+    "enabled": true,
+    "minWordSizeForTypos": {
+      "oneTypo": 5,
+      "twoTypos": 9,
+    },
+  },
+}
+`;
+
+exports[`Test on settings > Admin key: Update searchableAttributes settings on empty index 1`] = `
+{
+  "dictionary": [],
+  "displayedAttributes": [
+    "*",
+  ],
+  "distinctAttribute": null,
+  "faceting": {
+    "maxValuesPerFacet": 100,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [],
+  "nonSeparatorTokens": [],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "words",
+    "typo",
+    "proximity",
+    "attribute",
+    "sort",
+    "exactness",
+  ],
+  "searchableAttributes": [
+    "title",
+  ],
+  "separatorTokens": [],
+  "sortableAttributes": [],
+  "stopWords": [],
+  "synonyms": {},
+  "typoTolerance": {
+    "disableOnAttributes": [],
+    "disableOnWords": [],
+    "enabled": true,
+    "minWordSizeForTypos": {
+      "oneTypo": 5,
+      "twoTypos": 9,
+    },
+  },
+}
+`;
+
+exports[`Test on settings > Admin key: Update searchableAttributes settings on empty index with a primary key 1`] = `
+{
+  "dictionary": [],
+  "displayedAttributes": [
+    "*",
+  ],
+  "distinctAttribute": null,
+  "faceting": {
+    "maxValuesPerFacet": 100,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [],
+  "nonSeparatorTokens": [],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "words",
+    "typo",
+    "proximity",
+    "attribute",
+    "sort",
+    "exactness",
+  ],
+  "searchableAttributes": [
+    "title",
+  ],
+  "separatorTokens": [],
+  "sortableAttributes": [],
+  "stopWords": [],
+  "synonyms": {},
+  "typoTolerance": {
+    "disableOnAttributes": [],
+    "disableOnWords": [],
+    "enabled": true,
+    "minWordSizeForTypos": {
+      "oneTypo": 5,
+      "twoTypos": 9,
+    },
+  },
+}
+`;
+
+exports[`Test on settings > Admin key: Update settings 1`] = `
+{
+  "dictionary": [
+    "J. K.",
+    "J. R. R.",
+  ],
+  "displayedAttributes": [
+    "title",
+  ],
+  "distinctAttribute": "title",
+  "faceting": {
+    "maxValuesPerFacet": 50,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [
+    "title",
+  ],
+  "nonSeparatorTokens": [
+    "&sep",
+    "/",
+    "|",
+  ],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "id:asc",
+    "typo",
+  ],
+  "searchableAttributes": [
+    "title",
+  ],
+  "separatorTokens": [
+    "&sep",
+    "/",
+    "|",
+  ],
+  "sortableAttributes": [
+    "title",
+  ],
+  "stopWords": [
+    "the",
+  ],
+  "synonyms": {
+    "harry": [
+      "potter",
+    ],
+  },
+  "typoTolerance": {
+    "disableOnAttributes": [
+      "comment",
+    ],
+    "disableOnWords": [
+      "prince",
+    ],
+    "enabled": false,
+    "minWordSizeForTypos": {
+      "oneTypo": 1,
+      "twoTypos": 100,
+    },
+  },
+}
+`;
+
+exports[`Test on settings > Admin key: Update settings on empty index with primary key 1`] = `
+{
+  "dictionary": [],
+  "displayedAttributes": [
+    "*",
+  ],
+  "distinctAttribute": "title",
+  "faceting": {
+    "maxValuesPerFacet": 100,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [],
+  "nonSeparatorTokens": [],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "title:asc",
+    "typo",
+  ],
+  "searchableAttributes": [
+    "*",
+  ],
+  "separatorTokens": [],
+  "sortableAttributes": [],
+  "stopWords": [
+    "the",
+  ],
+  "synonyms": {},
+  "typoTolerance": {
+    "disableOnAttributes": [],
+    "disableOnWords": [],
+    "enabled": true,
+    "minWordSizeForTypos": {
+      "oneTypo": 5,
+      "twoTypos": 9,
+    },
+  },
+}
+`;
+
+exports[`Test on settings > Admin key: Update settings with all null values 1`] = `
+{
+  "dictionary": [],
+  "displayedAttributes": [
+    "*",
+  ],
+  "distinctAttribute": null,
+  "faceting": {
+    "maxValuesPerFacet": 100,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [],
+  "nonSeparatorTokens": [],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "words",
+    "typo",
+    "proximity",
+    "attribute",
+    "sort",
+    "exactness",
+  ],
+  "searchableAttributes": [
+    "*",
+  ],
+  "separatorTokens": [],
+  "sortableAttributes": [],
+  "stopWords": [],
+  "synonyms": {},
+  "typoTolerance": {
+    "disableOnAttributes": [],
+    "disableOnWords": [],
+    "enabled": true,
+    "minWordSizeForTypos": {
+      "oneTypo": 5,
+      "twoTypos": 9,
+    },
+  },
+}
+`;
+
+exports[`Test on settings > Master key: Get default settings of an index 1`] = `
+{
+  "dictionary": [],
+  "displayedAttributes": [
+    "*",
+  ],
+  "distinctAttribute": null,
+  "faceting": {
+    "maxValuesPerFacet": 100,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [],
+  "nonSeparatorTokens": [],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "words",
+    "typo",
+    "proximity",
+    "attribute",
+    "sort",
+    "exactness",
+  ],
+  "searchableAttributes": [
+    "*",
+  ],
+  "separatorTokens": [],
+  "sortableAttributes": [],
+  "stopWords": [],
+  "synonyms": {},
+  "typoTolerance": {
+    "disableOnAttributes": [],
+    "disableOnWords": [],
+    "enabled": true,
+    "minWordSizeForTypos": {
+      "oneTypo": 5,
+      "twoTypos": 9,
+    },
+  },
+}
+`;
+
+exports[`Test on settings > Master key: Get default settings of empty index with primary key 1`] = `
+{
+  "dictionary": [],
+  "displayedAttributes": [
+    "*",
+  ],
+  "distinctAttribute": null,
+  "faceting": {
+    "maxValuesPerFacet": 100,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [],
+  "nonSeparatorTokens": [],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "words",
+    "typo",
+    "proximity",
+    "attribute",
+    "sort",
+    "exactness",
+  ],
+  "searchableAttributes": [
+    "*",
+  ],
+  "separatorTokens": [],
+  "sortableAttributes": [],
+  "stopWords": [],
+  "synonyms": {},
+  "typoTolerance": {
+    "disableOnAttributes": [],
+    "disableOnWords": [],
+    "enabled": true,
+    "minWordSizeForTypos": {
+      "oneTypo": 5,
+      "twoTypos": 9,
+    },
+  },
+}
+`;
+
+exports[`Test on settings > Master key: Reset settings 1`] = `
+{
+  "dictionary": [],
+  "displayedAttributes": [
+    "*",
+  ],
+  "distinctAttribute": null,
+  "faceting": {
+    "maxValuesPerFacet": 100,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [],
+  "nonSeparatorTokens": [],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "words",
+    "typo",
+    "proximity",
+    "attribute",
+    "sort",
+    "exactness",
+  ],
+  "searchableAttributes": [
+    "*",
+  ],
+  "separatorTokens": [],
+  "sortableAttributes": [],
+  "stopWords": [],
+  "synonyms": {},
+  "typoTolerance": {
+    "disableOnAttributes": [],
+    "disableOnWords": [],
+    "enabled": true,
+    "minWordSizeForTypos": {
+      "oneTypo": 5,
+      "twoTypos": 9,
+    },
+  },
+}
+`;
+
+exports[`Test on settings > Master key: Reset settings of empty index 1`] = `
+{
+  "dictionary": [],
+  "displayedAttributes": [
+    "*",
+  ],
+  "distinctAttribute": null,
+  "faceting": {
+    "maxValuesPerFacet": 100,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [],
+  "nonSeparatorTokens": [],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "words",
+    "typo",
+    "proximity",
+    "attribute",
+    "sort",
+    "exactness",
+  ],
+  "searchableAttributes": [
+    "*",
+  ],
+  "separatorTokens": [],
+  "sortableAttributes": [],
+  "stopWords": [],
+  "synonyms": {},
+  "typoTolerance": {
+    "disableOnAttributes": [],
+    "disableOnWords": [],
+    "enabled": true,
+    "minWordSizeForTypos": {
+      "oneTypo": 5,
+      "twoTypos": 9,
+    },
+  },
+}
+`;
+
+exports[`Test on settings > Master key: Update searchableAttributes settings on empty index 1`] = `
+{
+  "dictionary": [],
+  "displayedAttributes": [
+    "*",
+  ],
+  "distinctAttribute": null,
+  "faceting": {
+    "maxValuesPerFacet": 100,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [],
+  "nonSeparatorTokens": [],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "words",
+    "typo",
+    "proximity",
+    "attribute",
+    "sort",
+    "exactness",
+  ],
+  "searchableAttributes": [
+    "title",
+  ],
+  "separatorTokens": [],
+  "sortableAttributes": [],
+  "stopWords": [],
+  "synonyms": {},
+  "typoTolerance": {
+    "disableOnAttributes": [],
+    "disableOnWords": [],
+    "enabled": true,
+    "minWordSizeForTypos": {
+      "oneTypo": 5,
+      "twoTypos": 9,
+    },
+  },
+}
+`;
+
+exports[`Test on settings > Master key: Update searchableAttributes settings on empty index with a primary key 1`] = `
+{
+  "dictionary": [],
+  "displayedAttributes": [
+    "*",
+  ],
+  "distinctAttribute": null,
+  "faceting": {
+    "maxValuesPerFacet": 100,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [],
+  "nonSeparatorTokens": [],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "words",
+    "typo",
+    "proximity",
+    "attribute",
+    "sort",
+    "exactness",
+  ],
+  "searchableAttributes": [
+    "title",
+  ],
+  "separatorTokens": [],
+  "sortableAttributes": [],
+  "stopWords": [],
+  "synonyms": {},
+  "typoTolerance": {
+    "disableOnAttributes": [],
+    "disableOnWords": [],
+    "enabled": true,
+    "minWordSizeForTypos": {
+      "oneTypo": 5,
+      "twoTypos": 9,
+    },
+  },
+}
+`;
+
+exports[`Test on settings > Master key: Update settings 1`] = `
+{
+  "dictionary": [
+    "J. K.",
+    "J. R. R.",
+  ],
+  "displayedAttributes": [
+    "title",
+  ],
+  "distinctAttribute": "title",
+  "faceting": {
+    "maxValuesPerFacet": 50,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [
+    "title",
+  ],
+  "nonSeparatorTokens": [
+    "&sep",
+    "/",
+    "|",
+  ],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "id:asc",
+    "typo",
+  ],
+  "searchableAttributes": [
+    "title",
+  ],
+  "separatorTokens": [
+    "&sep",
+    "/",
+    "|",
+  ],
+  "sortableAttributes": [
+    "title",
+  ],
+  "stopWords": [
+    "the",
+  ],
+  "synonyms": {
+    "harry": [
+      "potter",
+    ],
+  },
+  "typoTolerance": {
+    "disableOnAttributes": [
+      "comment",
+    ],
+    "disableOnWords": [
+      "prince",
+    ],
+    "enabled": false,
+    "minWordSizeForTypos": {
+      "oneTypo": 1,
+      "twoTypos": 100,
+    },
+  },
+}
+`;
+
+exports[`Test on settings > Master key: Update settings on empty index with primary key 1`] = `
+{
+  "dictionary": [],
+  "displayedAttributes": [
+    "*",
+  ],
+  "distinctAttribute": "title",
+  "faceting": {
+    "maxValuesPerFacet": 100,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [],
+  "nonSeparatorTokens": [],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "title:asc",
+    "typo",
+  ],
+  "searchableAttributes": [
+    "*",
+  ],
+  "separatorTokens": [],
+  "sortableAttributes": [],
+  "stopWords": [
+    "the",
+  ],
+  "synonyms": {},
+  "typoTolerance": {
+    "disableOnAttributes": [],
+    "disableOnWords": [],
+    "enabled": true,
+    "minWordSizeForTypos": {
+      "oneTypo": 5,
+      "twoTypos": 9,
+    },
+  },
+}
+`;
+
+exports[`Test on settings > Master key: Update settings with all null values 1`] = `
+{
+  "dictionary": [],
+  "displayedAttributes": [
+    "*",
+  ],
+  "distinctAttribute": null,
+  "faceting": {
+    "maxValuesPerFacet": 100,
+    "sortFacetValuesBy": {
+      "*": "alpha",
+    },
+  },
+  "filterableAttributes": [],
+  "nonSeparatorTokens": [],
+  "pagination": {
+    "maxTotalHits": 1000,
+  },
+  "rankingRules": [
+    "words",
+    "typo",
+    "proximity",
+    "attribute",
+    "sort",
+    "exactness",
+  ],
+  "searchableAttributes": [
+    "*",
+  ],
+  "separatorTokens": [],
+  "sortableAttributes": [],
+  "stopWords": [],
+  "synonyms": {},
+  "typoTolerance": {
+    "disableOnAttributes": [],
+    "disableOnWords": [],
+    "enabled": true,
+    "minWordSizeForTypos": {
+      "oneTypo": 5,
+      "twoTypos": 9,
+    },
+  },
+}
+`;
 
 exports[`Test on settings Admin key: Get default settings of an index 1`] = `
 {

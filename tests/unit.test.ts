@@ -1,3 +1,4 @@
+import { expect, test, afterAll } from 'vitest'
 import {
   clearAllIndexes,
   config,

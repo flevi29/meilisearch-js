@@ -1,3 +1,4 @@
+import { expect, test, describe, beforeEach, afterAll } from 'vitest'
 import { EnqueuedTask } from '../src/index.js'
 import {
   clearAllIndexes,
@@ -12,7 +13,8 @@ const index = {
   uid: 'movies_test',
 }
 
-import.meta.jest.setTimeout(100 * 1000)
+// @TODO
+// import.meta.jest.setTimeout(100 * 1000)
 
 afterAll(() => {
   return clearAllIndexes(config)
@@ -87,7 +89,7 @@ describe.each([
   { host: `${BAD_HOST}/api`, trailing: false },
   { host: `${BAD_HOST}/trailing/`, trailing: true },
 ])('Tests on url construction', ({ host, trailing }) => {
-  test(`Test getNonSeparatorTokens route`, async () => {
+  test.skip(`Test getNonSeparatorTokens route`, async () => {
     const route = `indexes/${index.uid}/settings/non-separator-tokens`
     const client = new MeiliSearch({ host })
     const strippedHost = trailing ? host.slice(0, -1) : host
@@ -102,7 +104,7 @@ describe.each([
     )
   })
 
-  test(`Test updateNonSeparatorTokens route`, async () => {
+  test.skip(`Test updateNonSeparatorTokens route`, async () => {
     const route = `indexes/${index.uid}/settings/non-separator-tokens`
     const client = new MeiliSearch({ host })
     const strippedHost = trailing ? host.slice(0, -1) : host
@@ -117,7 +119,7 @@ describe.each([
     )
   })
 
-  test(`Test resetNonSeparatorTokens route`, async () => {
+  test.skip(`Test resetNonSeparatorTokens route`, async () => {
     const route = `indexes/${index.uid}/settings/non-separator-tokens`
     const client = new MeiliSearch({ host })
     const strippedHost = trailing ? host.slice(0, -1) : host

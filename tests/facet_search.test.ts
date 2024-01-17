@@ -1,3 +1,4 @@
+import { expect, test, describe, beforeAll, afterAll } from 'vitest'
 import {
   clearAllIndexes,
   config,
@@ -99,7 +100,8 @@ describe.each([
   })
 })
 
-import.meta.jest.setTimeout(100 * 1000)
+// @TODO
+// import.meta.jest.setTimeout(100 * 1000)
 
 afterAll(() => {
   return clearAllIndexes(config)

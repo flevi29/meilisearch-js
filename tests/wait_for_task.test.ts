@@ -1,3 +1,4 @@
+import { expect, test, describe, beforeEach, afterAll } from 'vitest'
 import { TaskStatus } from '../src/index.js'
 import {
   clearAllIndexes,
@@ -10,7 +11,8 @@ const index = {
   uid: 'movies_test',
 }
 
-import.meta.jest.setTimeout(100 * 1000)
+// @TODO
+// import.meta.jest.setTimeout(100 * 1000)
 
 afterAll(() => {
   return clearAllIndexes(config)

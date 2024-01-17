@@ -1,9 +1,10 @@
+import { env } from 'node:process'
 import { MeiliSearch, Index } from '../../src/index.js'
 import type { Config } from '../../src/index.js'
 
 // testing
 const MASTER_KEY = 'masterKey'
-const HOST = process.env.MEILISEARCH_URL || 'http://127.0.0.1:7700'
+const HOST = env.MEILISEARCH_URL || 'http://127.0.0.1:7700'
 const BAD_HOST = 'http://127.0.0.1:7701'
 
 const config = {

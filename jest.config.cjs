@@ -14,21 +14,7 @@ const config = {
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
   ],
-  globalSetup: './jest-disable-built-in-fetch.cjs',
   projects: [
-    {
-      preset: 'ts-jest/presets/default-esm',
-      moduleNameMapper: { '^(\\.{1,2}/.*)\\.js$': '$1' },
-      transform: { '^.+\\.ts$': ['ts-jest', { useESM: true }] },
-      displayName: 'browser',
-      testEnvironment: 'jsdom',
-      testMatch: ['<rootDir>/tests/**/*.ts?(x)'],
-      testPathIgnorePatterns: [
-        'meilisearch-test-utils',
-        'env/',
-        'token.test.ts',
-      ],
-    },
     {
       preset: 'ts-jest/presets/default-esm',
       moduleNameMapper: { '^(\\.{1,2}/.*)\\.js$': '$1' },

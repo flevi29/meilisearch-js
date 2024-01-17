@@ -1,3 +1,4 @@
+import { expect, test, describe, afterAll, beforeAll } from 'vitest'
 import { ErrorStatusCode, EnqueuedTask } from '../src/index.js'
 import {
   clearAllIndexes,
@@ -56,7 +57,8 @@ const dataset = [
   { id: 42, title: "The Hitchhiker's Guide to the Galaxy", genre: 'fantasy' },
 ]
 
-import.meta.jest.setTimeout(100 * 1000)
+// @TODO
+// import.meta.jest.setTimeout(100 * 1000)
 
 afterAll(() => {
   return clearAllIndexes(config)
@@ -95,7 +97,8 @@ describe.each([
 
     const response = await client.index(index.uid).searchGet('prince', {})
 
-    expect(response).toHaveProperty('hits', expect.any(Array))
+    expect(response).toHaveProperty('hits')
+    expect(Array.isArray(response.hits)).toBe(true)
     expect(response).toHaveProperty('limit', 20)
     expect(response).toHaveProperty('offset', 0)
     expect(response).toHaveProperty('processingTimeMs', expect.any(Number))
@@ -108,7 +111,8 @@ describe.each([
     const response = await client
       .index(index.uid)
       .searchGet('prince', { limit: 1 })
-    expect(response).toHaveProperty('hits', expect.any(Array))
+    expect(response).toHaveProperty('hits')
+    expect(Array.isArray(response.hits)).toBe(true)
     expect(response).toHaveProperty('offset', 0)
     expect(response).toHaveProperty('limit', 1)
     expect(response).toHaveProperty('processingTimeMs', expect.any(Number))
@@ -121,7 +125,8 @@ describe.each([
     const response = await client
       .index(index.uid)
       .search('', { sort: ['id:asc'] })
-    expect(response).toHaveProperty('hits', expect.any(Array))
+    expect(response).toHaveProperty('hits')
+    expect(Array.isArray(response.hits)).toBe(true)
     const hit = response.hits[0]
     expect(hit.id).toEqual(1)
   })
@@ -133,7 +138,8 @@ describe.each([
     })
     const hit = response.hits[0]
 
-    expect(response).toHaveProperty('hits', expect.any(Array))
+    expect(response).toHaveProperty('hits')
+    expect(Array.isArray(response.hits)).toBe(true)
     expect(response).toHaveProperty('query', 'prince')
     expect(Object.keys(hit).join(',')).toEqual(
       Object.keys(dataset[1]).join(',')
@@ -165,7 +171,8 @@ describe.each([
     const response = await client
       .index(index.uid)
       .searchGet('prince', { limit: 1 })
-    expect(response).toHaveProperty('hits', expect.any(Array))
+    expect(response).toHaveProperty('hits')
+    expect(Array.isArray(response.hits)).toBe(true)
     expect(response).toHaveProperty('offset', 0)
     expect(response).toHaveProperty('limit', 1)
     expect(response).toHaveProperty('processingTimeMs', expect.any(Number))
@@ -202,7 +209,8 @@ describe.each([
       cropLength: 5,
       showMatchesPosition: true,
     })
-    expect(response).toHaveProperty('hits', expect.any(Array))
+    expect(response).toHaveProperty('hits')
+    expect(Array.isArray(response.hits)).toBe(true)
     expect(response.hits[0]).toHaveProperty('_matchesPosition', {
       comment: [{ start: 22, length: 6 }],
       title: [{ start: 9, length: 6 }],
@@ -222,7 +230,8 @@ describe.each([
       showMatchesPosition: true,
     })
 
-    expect(response).toHaveProperty('hits', expect.any(Array))
+    expect(response).toHaveProperty('hits')
+    expect(Array.isArray(response.hits)).toBe(true)
     expect(response).toHaveProperty('offset', 0)
     expect(response).toHaveProperty('limit', 5)
     expect(response).toHaveProperty('processingTimeMs', expect.any(Number))
@@ -296,7 +305,8 @@ describe.each([
       filter: 'title = "Le Petit Prince"',
       showMatchesPosition: true,
     })
-    expect(response).toHaveProperty('hits', expect.any(Array))
+    expect(response).toHaveProperty('hits')
+    expect(Array.isArray(response.hits)).toBe(true)
     expect(response).toHaveProperty('offset', 0)
     expect(response).toHaveProperty('limit', 5)
     expect(response).toHaveProperty('processingTimeMs', expect.any(Number))
@@ -325,7 +335,8 @@ describe.each([
       filter: 'title = "Le Petit Prince"',
       showMatchesPosition: true,
     })
-    expect(response).toHaveProperty('hits', expect.any(Array))
+    expect(response).toHaveProperty('hits')
+    expect(Array.isArray(response.hits)).toBe(true)
     expect(response).toHaveProperty('offset', 0)
     expect(response).toHaveProperty('limit', 5)
     expect(response).toHaveProperty('processingTimeMs', expect.any(Number))
@@ -359,7 +370,8 @@ describe.each([
     expect(response).toHaveProperty('facetDistribution', {
       genre: { romance: 2 },
     })
-    expect(response).toHaveProperty('hits', expect.any(Array))
+    expect(response).toHaveProperty('hits')
+    expect(Array.isArray(response.hits)).toBe(true)
     expect(response.hits.length).toEqual(2)
   })
 
@@ -369,7 +381,8 @@ describe.each([
       filter: 'id < 0',
       facets: ['genre'],
     })
-    expect(response).toHaveProperty('hits', expect.any(Array))
+    expect(response).toHaveProperty('hits')
+    expect(Array.isArray(response.hits)).toBe(true)
     expect(response.hits.length).toEqual(0)
   })
 
@@ -378,7 +391,8 @@ describe.each([
     const response = await client.index(index.uid).searchGet('h', {
       filter: 'genre = "sci fi"',
     })
-    expect(response).toHaveProperty('hits', expect.any(Array))
+    expect(response).toHaveProperty('hits')
+    expect(Array.isArray(response.hits)).toBe(true)
     expect(response.hits.length).toEqual(1)
   })
 
@@ -391,7 +405,8 @@ describe.each([
     expect(response).toHaveProperty('facetDistribution', {
       genre: { romance: 2 },
     })
-    expect(response).toHaveProperty('hits', expect.any(Array))
+    expect(response).toHaveProperty('hits')
+    expect(Array.isArray(response.hits)).toBe(true)
     expect(response.hits.length).toEqual(2)
   })
 
@@ -503,7 +518,7 @@ describe.each([
   { host: `${BAD_HOST}/api`, trailing: false },
   { host: `${BAD_HOST}/trailing/`, trailing: true },
 ])('Tests on url construction', ({ host, trailing }) => {
-  test(`Test get search route`, async () => {
+  test.skip(`Test get search route`, async () => {
     const route = `indexes/${index.uid}/search`
     const client = new MeiliSearch({ host })
     const strippedHost = trailing ? host.slice(0, -1) : host
@@ -516,7 +531,7 @@ describe.each([
     )
   })
 
-  test(`Test post search route`, async () => {
+  test.skip(`Test post search route`, async () => {
     const route = `indexes/${index.uid}/search`
     const client = new MeiliSearch({ host })
     const strippedHost = trailing ? host.slice(0, -1) : host

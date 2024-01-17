@@ -17,8 +17,7 @@ module.exports = {
     // @TODO: Can be removed, as env ES version sets this too:
     //        https://eslint.org/docs/latest/use/configure/language-options#specifying-environments
     // ecmaVersion: 2019,
-    // @TODO: Remove because in JS files we use commonjs
-    // sourceType: 'module',
+    sourceType: 'module',
   },
   // prettier must always be put last, so it overrides anything before it
   extends: [
@@ -27,7 +26,6 @@ module.exports = {
     // https://prettier.io/docs/en/integrating-with-linters.html
     // https://github.com/prettier/eslint-config-prettier
     'prettier',
-    'plugin:@typescript-eslint/recommended',
   ],
   rules: {
     // @TODO: Remove this rule, as it's a style rule covered by prettier and

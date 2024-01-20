@@ -88,49 +88,43 @@ describe.each([
   { host: BAD_HOST, trailing: false },
   { host: `${BAD_HOST}/api`, trailing: false },
   { host: `${BAD_HOST}/trailing/`, trailing: true },
-])('Tests on url construction', ({ host, trailing }) => {
-  test.skip(`Test getNonSeparatorTokens route`, async () => {
-    const route = `indexes/${index.uid}/settings/non-separator-tokens`
+])('Tests on url construction', ({ host /*, trailing*/ }) => {
+  test(`Test getNonSeparatorTokens route`, async () => {
+    // const route = `indexes/${index.uid}/settings/non-separator-tokens`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).getNonSeparatorTokens()
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //   'http://',
+    //   ''
+    // )}`
   })
 
-  test.skip(`Test updateNonSeparatorTokens route`, async () => {
-    const route = `indexes/${index.uid}/settings/non-separator-tokens`
+  test(`Test updateNonSeparatorTokens route`, async () => {
+    // const route = `indexes/${index.uid}/settings/non-separator-tokens`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).updateNonSeparatorTokens([])
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //   'http://',
+    //   ''
+    // )}`
   })
 
-  test.skip(`Test resetNonSeparatorTokens route`, async () => {
-    const route = `indexes/${index.uid}/settings/non-separator-tokens`
+  test(`Test resetNonSeparatorTokens route`, async () => {
+    // const route = `indexes/${index.uid}/settings/non-separator-tokens`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).resetNonSeparatorTokens()
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //   'http://',
+    //   ''
+    // )}`
   })
 })

@@ -805,110 +805,96 @@ Hint: It might not be working because maybe you're not up to date with the Meili
     { host: BAD_HOST, trailing: false },
     { host: `${BAD_HOST}/api`, trailing: false },
     { host: `${BAD_HOST}/trailing/`, trailing: true },
-  ])('Tests on url construction', ({ host, trailing }) => {
-    test.skip(`Test getDocument route`, async () => {
-      const route = `indexes/${indexPk.uid}/documents/1`
+  ])('Tests on url construction', ({ host /*, trailing*/ }) => {
+    test(`Test getDocument route`, async () => {
+      // const route = `indexes/${indexPk.uid}/documents/1`
       const client = new MeiliSearch({ host })
-      const strippedHost = trailing ? host.slice(0, -1) : host
+      // const strippedHost = trailing ? host.slice(0, -1) : host
       await expect(
         client.index(indexPk.uid).getDocument(1)
-      ).rejects.toHaveProperty(
-        'message',
-        `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-          'http://',
-          ''
-        )}`
-      )
+      ).rejects.toHaveProperty('message', 'fetch failed')
+      // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+      //           'http://',
+      //           ''
+      //         )}`
     })
 
-    test.skip(`Test getDocuments route`, async () => {
-      const route = `indexes/${indexPk.uid}/documents`
+    test(`Test getDocuments route`, async () => {
+      // const route = `indexes/${indexPk.uid}/documents`
       const client = new MeiliSearch({ host })
-      const strippedHost = trailing ? host.slice(0, -1) : host
+      // const strippedHost = trailing ? host.slice(0, -1) : host
       await expect(
         client.index(indexPk.uid).getDocuments<Book>()
-      ).rejects.toHaveProperty(
-        'message',
-        `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-          'http://',
-          ''
-        )}`
-      )
+      ).rejects.toHaveProperty('message', 'fetch failed')
+      // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+      //           'http://',
+      //           ''
+      //         )}`
     })
 
-    test.skip(`Test addDocuments route`, async () => {
-      const route = `indexes/${indexPk.uid}/documents`
+    test(`Test addDocuments route`, async () => {
+      // const route = `indexes/${indexPk.uid}/documents`
       const client = new MeiliSearch({ host })
-      const strippedHost = trailing ? host.slice(0, -1) : host
+      // const strippedHost = trailing ? host.slice(0, -1) : host
       await expect(
         client.index(indexPk.uid).addDocuments([])
-      ).rejects.toHaveProperty(
-        'message',
-        `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-          'http://',
-          ''
-        )}`
-      )
+      ).rejects.toHaveProperty('message', 'fetch failed')
+      // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+      //           'http://',
+      //           ''
+      //         )}`
     })
 
-    test.skip(`Test updateDocuments route`, async () => {
-      const route = `indexes/${indexPk.uid}/documents`
+    test(`Test updateDocuments route`, async () => {
+      // const route = `indexes/${indexPk.uid}/documents`
       const client = new MeiliSearch({ host })
-      const strippedHost = trailing ? host.slice(0, -1) : host
+      // const strippedHost = trailing ? host.slice(0, -1) : host
       await expect(
         client.index(indexPk.uid).updateDocuments([])
-      ).rejects.toHaveProperty(
-        'message',
-        `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-          'http://',
-          ''
-        )}`
-      )
+      ).rejects.toHaveProperty('message', 'fetch failed')
+      // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+      //           'http://',
+      //           ''
+      //         )}`
     })
 
-    test.skip(`Test deleteDocument route`, async () => {
-      const route = `indexes/${indexPk.uid}/documents/1`
+    test(`Test deleteDocument route`, async () => {
+      // const route = `indexes/${indexPk.uid}/documents/1`
       const client = new MeiliSearch({ host })
-      const strippedHost = trailing ? host.slice(0, -1) : host
+      // const strippedHost = trailing ? host.slice(0, -1) : host
       await expect(
         client.index(indexPk.uid).deleteDocument('1')
-      ).rejects.toHaveProperty(
-        'message',
-        `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-          'http://',
-          ''
-        )}`
-      )
+      ).rejects.toHaveProperty('message', 'fetch failed')
+      // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+      //           'http://',
+      //           ''
+      //         )}`
     })
 
-    test.skip(`Test deleteDocuments route`, async () => {
-      const route = `indexes/${indexPk.uid}/documents/delete-batch`
+    test(`Test deleteDocuments route`, async () => {
+      // const route = `indexes/${indexPk.uid}/documents/delete-batch`
       const client = new MeiliSearch({ host })
-      const strippedHost = trailing ? host.slice(0, -1) : host
+      // const strippedHost = trailing ? host.slice(0, -1) : host
       await expect(
         client.index(indexPk.uid).deleteDocuments([])
-      ).rejects.toHaveProperty(
-        'message',
-        `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-          'http://',
-          ''
-        )}`
-      )
+      ).rejects.toHaveProperty('message', 'fetch failed')
+      // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+      //           'http://',
+      //           ''
+      //         )}`
     })
 
-    test.skip(`Test deleteAllDocuments route`, async () => {
-      const route = `indexes/${indexPk.uid}/documents`
+    test(`Test deleteAllDocuments route`, async () => {
+      // const route = `indexes/${indexPk.uid}/documents`
       const client = new MeiliSearch({ host })
-      const strippedHost = trailing ? host.slice(0, -1) : host
+      // const strippedHost = trailing ? host.slice(0, -1) : host
       await expect(
         client.index(indexPk.uid).deleteAllDocuments()
-      ).rejects.toHaveProperty(
-        'message',
-        `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-          'http://',
-          ''
-        )}`
-      )
+      ).rejects.toHaveProperty('message', 'fetch failed')
+      // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+      //           'http://',
+      //           ''
+      //         )}`
     })
   })
 })

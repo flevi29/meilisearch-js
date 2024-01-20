@@ -157,49 +157,43 @@ describe.each([
   { host: BAD_HOST, trailing: false },
   { host: `${BAD_HOST}/api`, trailing: false },
   { host: `${BAD_HOST}/trailing/`, trailing: true },
-])('Tests on url construction', ({ host, trailing }) => {
-  test.skip(`Test getRankingRules route`, async () => {
-    const route = `indexes/${index.uid}/settings/ranking-rules`
+])('Tests on url construction', ({ host /*, trailing*/ }) => {
+  test(`Test getRankingRules route`, async () => {
+    // const route = `indexes/${index.uid}/settings/ranking-rules`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).getRankingRules()
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //   'http://',
+    //   ''
+    // )}`
   })
 
-  test.skip(`Test updateRankingRules route`, async () => {
-    const route = `indexes/${index.uid}/settings/ranking-rules`
+  test(`Test updateRankingRules route`, async () => {
+    // const route = `indexes/${index.uid}/settings/ranking-rules`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).updateRankingRules([])
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //   'http://',
+    //   ''
+    // )}`
   })
 
-  test.skip(`Test resetRankingRules route`, async () => {
-    const route = `indexes/${index.uid}/settings/ranking-rules`
+  test(`Test resetRankingRules route`, async () => {
+    // const route = `indexes/${index.uid}/settings/ranking-rules`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).resetRankingRules()
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //   'http://',
+    //   ''
+    // )}`
   })
 })

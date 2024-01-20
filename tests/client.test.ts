@@ -63,11 +63,11 @@ describe.each([
       apiKey: key,
       requestConfig: {
         headers: {
-          Expect: '200-OK',
+          'hello-there!': 'General Kenobi',
         },
       },
     })
-    expect(client.httpRequest.headers['Expect']).toBe('200-OK')
+    expect(client.httpRequest.headers['hello-there!']).toBe('General Kenobi')
     const health = await client.isHealthy()
     expect(health).toBe(true)
   })
@@ -78,10 +78,10 @@ describe.each([
       ...config,
       apiKey: key,
       requestConfig: {
-        headers: [['Expect', '200-OK']],
+        headers: [['hello-there!', 'General Kenobi']],
       },
     })
-    expect(client.httpRequest.headers['Expect']).toBe('200-OK')
+    expect(client.httpRequest.headers['hello-there!']).toBe('General Kenobi')
     const health = await client.isHealthy()
     expect(health).toBe(true)
   })
@@ -89,7 +89,7 @@ describe.each([
   test(`${permission} key: Create client with custom headers (Headers)`, async () => {
     const key = await getKey(permission)
     const headers = new Headers()
-    headers.append('Expect', '200-OK')
+    headers.append('hello-there!', 'General Kenobi')
     const client = new MeiliSearch({
       ...config,
       apiKey: key,
@@ -97,7 +97,7 @@ describe.each([
         headers,
       },
     })
-    expect(client.httpRequest.headers.expect).toBe('200-OK')
+    expect(client.httpRequest.headers['hello-there!']).toBe('General Kenobi')
     const health = await client.isHealthy()
     expect(health).toBe(true)
   })
@@ -208,14 +208,10 @@ describe.each([{ permission: 'Master' }, { permission: 'Admin' }])(
       const client = new MeiliSearch({
         ...config,
         apiKey: key,
-        requestConfig: {
-          headers: {
-            Expect: '200-OK',
-          },
-        },
+        requestConfig: { headers: { 'hello-there!': 'General Kenobi' } },
       })
       expect(client.config.requestConfig?.headers).toStrictEqual({
-        Expect: '200-OK',
+        'hello-there!': 'General Kenobi',
       })
       const health = await client.isHealthy()
 
@@ -729,121 +725,139 @@ describe.each([
   { host: BAD_HOST, trailing: false },
   { host: `${BAD_HOST}/api`, trailing: false },
   { host: `${BAD_HOST}/trailing/`, trailing: true },
-])('Tests on url construction', ({ host, trailing }) => {
-  test.skip(`Test getIndex route`, async () => {
-    const route = `indexes/${indexPk.uid}`
+])('Tests on url construction', ({ host /*, trailing*/ }) => {
+  test(`Test getIndex route`, async () => {
+    // @TODO
+    // const route = `indexes/${indexPk.uid}`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(client.getIndex(indexPk.uid)).rejects.toHaveProperty(
       'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
+      'fetch failed'
     )
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 
-  test.skip(`Test createIndex route`, async () => {
-    const route = `indexes`
+  test(`Test createIndex route`, async () => {
+    // @TODO
+    // const route = `indexes`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(client.createIndex(indexPk.uid)).rejects.toHaveProperty(
       'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
+      'fetch failed'
     )
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 
-  test.skip(`Test updateIndex route`, async () => {
-    const route = `indexes/${indexPk.uid}`
+  test(`Test updateIndex route`, async () => {
+    // @TODO
+    // const route = `indexes/${indexPk.uid}`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(client.updateIndex(indexPk.uid)).rejects.toHaveProperty(
       'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
+      'fetch failed'
     )
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 
-  test.skip(`Test deleteIndex route`, async () => {
-    const route = `indexes/${indexPk.uid}`
+  test(`Test deleteIndex route`, async () => {
+    // @TODO
+    // const route = `indexes/${indexPk.uid}`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(client.deleteIndex(indexPk.uid)).rejects.toHaveProperty(
       'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
+      'fetch failed'
     )
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 
-  test.skip(`Test get indexes route`, async () => {
-    const route = `indexes`
+  test(`Test get indexes route`, async () => {
+    // @TODO
+    // const route = `indexes`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(client.getIndexes()).rejects.toHaveProperty(
       'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
+      'fetch failed'
     )
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 
-  test.skip(`Test getKeys route`, async () => {
-    const route = `keys`
+  test(`Test getKeys route`, async () => {
+    // @TODO
+    // const route = `keys`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(client.getKeys()).rejects.toHaveProperty(
       'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
+      'fetch failed'
     )
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 
-  test.skip(`Test health route`, async () => {
-    const route = `health`
+  test(`Test health route`, async () => {
+    // @TODO
+    // const route = `health`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(client.health()).rejects.toHaveProperty(
       'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
+      'fetch failed'
     )
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 
-  test.skip(`Test stats route`, async () => {
-    const route = `stats`
+  test(`Test stats route`, async () => {
+    // @TODO
+    // const route = `stats`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(client.getStats()).rejects.toHaveProperty(
       'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
+      'fetch failed'
     )
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 
-  test.skip(`Test version route`, async () => {
-    const route = `version`
+  test(`Test version route`, async () => {
+    // @TODO
+    // const route = `version`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(client.getVersion()).rejects.toHaveProperty(
       'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
+      'fetch failed'
     )
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 })

@@ -162,49 +162,43 @@ describe.each([
   { host: BAD_HOST, trailing: false },
   { host: `${BAD_HOST}/api`, trailing: false },
   { host: `${BAD_HOST}/trailing/`, trailing: true },
-])('Tests on url construction', ({ host, trailing }) => {
-  test.skip(`Test get typo tolerance route`, async () => {
-    const route = `indexes/${index.uid}/settings/typo-tolerance`
+])('Tests on url construction', ({ host /*, trailing*/ }) => {
+  test(`Test get typo tolerance route`, async () => {
+    // const route = `indexes/${index.uid}/settings/typo-tolerance`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).getTypoTolerance()
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //   'http://',
+    //   ''
+    // )}`
   })
 
-  test.skip(`Test update typo tolerance route`, async () => {
-    const route = `indexes/${index.uid}/settings/typo-tolerance`
+  test(`Test update typo tolerance route`, async () => {
+    // const route = `indexes/${index.uid}/settings/typo-tolerance`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).updateTypoTolerance({})
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //   'http://',
+    //   ''
+    // )}`
   })
 
-  test.skip(`Test reset typo tolerance route`, async () => {
-    const route = `indexes/${index.uid}/settings/typo-tolerance`
+  test(`Test reset typo tolerance route`, async () => {
+    // const route = `indexes/${index.uid}/settings/typo-tolerance`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).resetTypoTolerance()
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //   'http://',
+    //   ''
+    // )}`
   })
 })

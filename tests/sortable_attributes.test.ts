@@ -154,49 +154,43 @@ describe.each([
   { host: BAD_HOST, trailing: false },
   { host: `${BAD_HOST}/api`, trailing: false },
   { host: `${BAD_HOST}/trailing/`, trailing: true },
-])('Tests on url construction', ({ host, trailing }) => {
-  test.skip(`Test getSortableAttributes route`, async () => {
-    const route = `indexes/${index.uid}/settings/sortable-attributes`
+])('Tests on url construction', ({ host /*, trailing*/ }) => {
+  test(`Test getSortableAttributes route`, async () => {
+    // const route = `indexes/${index.uid}/settings/sortable-attributes`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).getSortableAttributes()
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //   'http://',
+    //   ''
+    // )}`
   })
 
-  test.skip(`Test updateSortableAttributes route`, async () => {
-    const route = `indexes/${index.uid}/settings/sortable-attributes`
+  test(`Test updateSortableAttributes route`, async () => {
+    // const route = `indexes/${index.uid}/settings/sortable-attributes`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).updateSortableAttributes([])
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //   'http://',
+    //   ''
+    // )}`
   })
 
-  test.skip(`Test resetSortableAttributes route`, async () => {
-    const route = `indexes/${index.uid}/settings/sortable-attributes`
+  test(`Test resetSortableAttributes route`, async () => {
+    // const route = `indexes/${index.uid}/settings/sortable-attributes`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).resetSortableAttributes()
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //   'http://',
+    //   ''
+    // )}`
   })
 })

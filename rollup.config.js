@@ -35,7 +35,6 @@ const IS_PROD = process.env.NODE_ENV === 'production'
 export default defineConfig([
   {
     input: 'src/browser.ts',
-    external: ['cross-fetch/polyfill'],
     output: {
       // All Meilisearch exports will be available on global variable `window`
       name: 'window',
@@ -67,7 +66,6 @@ export default defineConfig([
   },
   {
     input: 'src/index.ts',
-    external: ['cross-fetch/polyfill'],
     output: {
       file: CJS,
       format: 'cjs',

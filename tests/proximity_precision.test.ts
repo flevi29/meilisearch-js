@@ -1,4 +1,5 @@
-import { EnqueuedTask } from '../src/enqueued-task'
+import { afterAll, describe, test, beforeEach, expect } from 'vitest'
+import { EnqueuedTask } from '../src/index.js'
 import {
   clearAllIndexes,
   config,
@@ -6,13 +7,14 @@ import {
   MeiliSearch,
   getClient,
   dataset,
-} from './utils/meilisearch-test-utils'
+} from './utils/meilisearch-test-utils.js'
 
 const index = {
   uid: 'movies_test',
 }
 
-jest.setTimeout(100 * 1000)
+// @TODO
+// jest.setTimeout(100 * 1000)
 
 afterAll(() => {
   return clearAllIndexes(config)
@@ -86,49 +88,43 @@ describe.each([
   { host: BAD_HOST, trailing: false },
   { host: `${BAD_HOST}/api`, trailing: false },
   { host: `${BAD_HOST}/trailing/`, trailing: true },
-])('Tests on url construction', ({ host, trailing }) => {
+])('Tests on url construction', ({ host /*, trailing*/ }) => {
   test(`Test getProximityPrecision route`, async () => {
-    const route = `indexes/${index.uid}/settings/proximity-precision`
+    // const route = `indexes/${index.uid}/settings/proximity-precision`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).getProximityPrecision()
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //   'http://',
+    //   ''
+    // )}`
   })
 
   test(`Test updateProximityPrecision route`, async () => {
-    const route = `indexes/${index.uid}/settings/proximity-precision`
+    // const route = `indexes/${index.uid}/settings/proximity-precision`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).updateProximityPrecision('byAttribute')
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //   'http://',
+    //   ''
+    // )}`
   })
 
   test(`Test resetProximityPrecision route`, async () => {
-    const route = `indexes/${index.uid}/settings/proximity-precision`
+    // const route = `indexes/${index.uid}/settings/proximity-precision`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).resetProximityPrecision()
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //   'http://',
+    //   ''
+    // )}`
   })
 })

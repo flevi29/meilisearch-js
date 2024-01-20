@@ -157,49 +157,43 @@ describe.each([
   { host: BAD_HOST, trailing: false },
   { host: `${BAD_HOST}/api`, trailing: false },
   { host: `${BAD_HOST}/trailing/`, trailing: true },
-])('Tests on url construction', ({ host, trailing }) => {
-  test.skip(`Test getFilterableAttributes route`, async () => {
-    const route = `indexes/${index.uid}/settings/filterable-attributes`
+])('Tests on url construction', ({ host /*, trailing*/ }) => {
+  test(`Test getFilterableAttributes route`, async () => {
+    // const route = `indexes/${index.uid}/settings/filterable-attributes`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).getFilterableAttributes()
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 
-  test.skip(`Test updateFilterableAttributes route`, async () => {
-    const route = `indexes/${index.uid}/settings/filterable-attributes`
+  test(`Test updateFilterableAttributes route`, async () => {
+    // const route = `indexes/${index.uid}/settings/filterable-attributes`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).updateFilterableAttributes([])
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 
-  test.skip(`Test resetFilterableAttributes route`, async () => {
-    const route = `indexes/${index.uid}/settings/filterable-attributes`
+  test(`Test resetFilterableAttributes route`, async () => {
+    // const route = `indexes/${index.uid}/settings/filterable-attributes`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).resetFilterableAttributes()
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 })

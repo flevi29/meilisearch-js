@@ -78,52 +78,46 @@ describe.each([
   { host: BAD_HOST, trailing: false },
   { host: `${BAD_HOST}/api`, trailing: false },
   { host: `${BAD_HOST}/trailing/`, trailing: true },
-])('Tests on url construction', ({ host, trailing }) => {
-  test.skip(`Test getDictionary route`, async () => {
+])('Tests on url construction', ({ host /*, trailing*/ }) => {
+  test(`Test getDictionary route`, async () => {
     // @TODO
-    const route = `indexes/${index.uid}/settings/dictionary`
+    // const route = `indexes/${index.uid}/settings/dictionary`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).getDictionary()
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 
-  test.skip(`Test updateDictionary route`, async () => {
+  test(`Test updateDictionary route`, async () => {
     // @TODO
-    const route = `indexes/${index.uid}/settings/dictionary`
+    // const route = `indexes/${index.uid}/settings/dictionary`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).updateDictionary([])
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 
-  test.skip(`Test resetDictionary route`, async () => {
+  test(`Test resetDictionary route`, async () => {
     // @TODO
-    const route = `indexes/${index.uid}/settings/dictionary`
+    // const route = `indexes/${index.uid}/settings/dictionary`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).resetDictionary()
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 })

@@ -203,6 +203,7 @@ class HttpRequests {
     })
   }
 
+  // @TODO Get rid of all of these unnecessary overloads, HTTP class needs rework
   async get(
     url: string,
     params?: { [key: string]: any },

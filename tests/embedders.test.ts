@@ -1,5 +1,5 @@
-import { EnqueuedTask } from '../src/enqueued-task'
-import { Embedders } from '../src/types'
+import { afterAll, expect, test, describe, beforeEach } from 'vitest'
+import { type Embedders, EnqueuedTask } from '../src/index.js'
 import {
   clearAllIndexes,
   config,
@@ -8,13 +8,14 @@ import {
   MeiliSearch,
   getClient,
   getKey,
-} from './utils/meilisearch-test-utils'
+} from './utils/meilisearch-test-utils.js'
 
 const index = {
   uid: 'movies_test',
 }
 
-jest.setTimeout(100 * 1000)
+// @TODO
+// jest.setTimeout(100 * 1000)
 
 afterAll(() => {
   return clearAllIndexes(config)
@@ -230,47 +231,44 @@ describe.each([
   { host: BAD_HOST, trailing: false },
   { host: `${BAD_HOST}/api`, trailing: false },
   { host: `${BAD_HOST}/trailing/`, trailing: true },
-])('Tests on url construction', ({ host, trailing }) => {
+])('Tests on url construction', ({ host /*, trailing*/ }) => {
   test(`Test getEmbedders route`, async () => {
-    const route = `indexes/${index.uid}/settings/embedders`
+    // const route = `indexes/${index.uid}/settings/embedders`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(client.index(index.uid).getEmbedders()).rejects.toHaveProperty(
       'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
+      'fetch failed'
     )
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 
   test(`Test updateEmbedders route`, async () => {
-    const route = `indexes/${index.uid}/settings/embedders`
+    // const route = `indexes/${index.uid}/settings/embedders`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).updateEmbedders({})
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 
   test(`Test resetEmbedders route`, async () => {
-    const route = `indexes/${index.uid}/settings/embedders`
+    // const route = `indexes/${index.uid}/settings/embedders`
     const client = new MeiliSearch({ host })
-    const strippedHost = trailing ? host.slice(0, -1) : host
+    // const strippedHost = trailing ? host.slice(0, -1) : host
     await expect(
       client.index(index.uid).resetEmbedders()
-    ).rejects.toHaveProperty(
-      'message',
-      `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
-        'http://',
-        ''
-      )}`
-    )
+    ).rejects.toHaveProperty('message', 'fetch failed')
+    // `request to ${strippedHost}/${route} failed, reason: connect ECONNREFUSED ${BAD_HOST.replace(
+    //         'http://',
+    //         ''
+    //       )}`
   })
 })

@@ -13,9 +13,11 @@
 </body>
 
 </html>
-<script src="./meilisearch.umd.js"></script>
+<script src="./meilisearch.umd.min.js"></script>
 <script>
   ; (async () => {
+    // @TODO The imported script is a hard link, shouldn't have such things in git
+    //       https://stackoverflow.com/a/3731139 ; was incredibly confusing until I found out what it actually is
     const client = new MeiliSearch({ host: "http://localhost:7700", apiKey: "masterKey" })
     const UID = "headers"
     const errorDiv = document.createElement("div");

@@ -5,8 +5,6 @@
  * Copyright: 2019, MeiliSearch
  */
 
-'use strict'
-
 import {
   MeiliSearchError,
   MeiliSearchCommunicationError,

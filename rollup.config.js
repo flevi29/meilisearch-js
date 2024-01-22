@@ -53,8 +53,7 @@ export default defineConfig([
         })
       ),
       nodeResolve(),
-      // @TODO Do we need this? It generates a slightly longer code seemingly, but it doesn't seem to help
-      //       especially considering that the depended on package is not even inlined, stays a require
+      // @TODO We're not requiring/importing CJS, don't need
       // commonjs({
       //   include: ['node_modules/**'],
       // }),

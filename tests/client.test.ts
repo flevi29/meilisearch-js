@@ -727,7 +727,6 @@ describe.each([
   { host: `${BAD_HOST}/trailing/`, trailing: true },
 ])('Tests on url construction', ({ host /*, trailing*/ }) => {
   test(`Test getIndex route`, async () => {
-    // @TODO
     // const route = `indexes/${indexPk.uid}`
     const client = new MeiliSearch({ host })
     // const strippedHost = trailing ? host.slice(0, -1) : host
@@ -742,7 +741,6 @@ describe.each([
   })
 
   test(`Test createIndex route`, async () => {
-    // @TODO
     // const route = `indexes`
     const client = new MeiliSearch({ host })
     // const strippedHost = trailing ? host.slice(0, -1) : host
@@ -757,7 +755,6 @@ describe.each([
   })
 
   test(`Test updateIndex route`, async () => {
-    // @TODO
     // const route = `indexes/${indexPk.uid}`
     const client = new MeiliSearch({ host })
     // const strippedHost = trailing ? host.slice(0, -1) : host
@@ -772,7 +769,6 @@ describe.each([
   })
 
   test(`Test deleteIndex route`, async () => {
-    // @TODO
     // const route = `indexes/${indexPk.uid}`
     const client = new MeiliSearch({ host })
     // const strippedHost = trailing ? host.slice(0, -1) : host
@@ -787,7 +783,6 @@ describe.each([
   })
 
   test(`Test get indexes route`, async () => {
-    // @TODO
     // const route = `indexes`
     const client = new MeiliSearch({ host })
     // const strippedHost = trailing ? host.slice(0, -1) : host
@@ -802,7 +797,6 @@ describe.each([
   })
 
   test(`Test getKeys route`, async () => {
-    // @TODO
     // const route = `keys`
     const client = new MeiliSearch({ host })
     // const strippedHost = trailing ? host.slice(0, -1) : host
@@ -817,7 +811,6 @@ describe.each([
   })
 
   test(`Test health route`, async () => {
-    // @TODO
     // const route = `health`
     const client = new MeiliSearch({ host })
     // const strippedHost = trailing ? host.slice(0, -1) : host
@@ -832,7 +825,6 @@ describe.each([
   })
 
   test(`Test stats route`, async () => {
-    // @TODO
     // const route = `stats`
     const client = new MeiliSearch({ host })
     // const strippedHost = trailing ? host.slice(0, -1) : host
@@ -847,7 +839,6 @@ describe.each([
   })
 
   test(`Test version route`, async () => {
-    // @TODO
     // const route = `version`
     const client = new MeiliSearch({ host })
     // const strippedHost = trailing ? host.slice(0, -1) : host

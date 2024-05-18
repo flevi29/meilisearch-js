@@ -7,19 +7,19 @@ import {
   MeiliSearchTimeOutError,
 } from '../src/index.js'
 
-const fetch = vi.fn()
-globalThis.fetch = fetch
+const mockedFetch = vi.fn()
+globalThis.fetch = mockedFetch
 
 // @TODO
 // import.meta.jest.setTimeout(100 * 1000)
 
 describe('Test on updates', () => {
   beforeEach(() => {
-    fetch.mockReset()
+    mockedFetch.mockReset()
   })
 
   test(`Throw MeiliSearchCommunicationError when thrown error is not MeiliSearchApiError`, async () => {
-    fetch.mockRejectedValue(new Error('fake error message'))
+    mockedFetch.mockRejectedValue(new Error('fake error message'))
 
     const client = new MeiliSearch({ host: 'http://localhost:9345' })
     try {
@@ -30,7 +30,7 @@ describe('Test on updates', () => {
   })
 
   test(`Not throw MeiliSearchCommunicationError when thrown error is MeiliSearchApiError`, async () => {
-    fetch.mockRejectedValue(
+    mockedFetch.mockRejectedValue(
       new MeiliSearchApiError(
         {
           message: 'Some error',
@@ -51,7 +51,7 @@ describe('Test on updates', () => {
   })
 
   test('MeiliSearchApiError can be compared with the instanceof operator', async () => {
-    fetch.mockRejectedValue(
+    mockedFetch.mockRejectedValue(
       new MeiliSearchApiError(
         {
           message: 'Some error',
@@ -72,7 +72,7 @@ describe('Test on updates', () => {
   })
 
   test('MeiliSearchCommunicationError can be compared with the instanceof operator', async () => {
-    fetch.mockRejectedValue(new Error('fake error message'))
+    mockedFetch.mockRejectedValue(new Error('fake error message'))
 
     const client = new MeiliSearch({ host: 'http://localhost:9345' })
     try {

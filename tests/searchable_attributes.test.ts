@@ -161,7 +161,6 @@ describe.each([
   { host: `${BAD_HOST}/trailing/`, trailing: true },
 ])('Tests on url construction', ({ host /*, trailing*/ }) => {
   test(`Test getSearchableAttributes route`, async () => {
-    // @TODO
     // const route = `indexes/${index.uid}/settings/searchable-attributes`
     const client = new MeiliSearch({ host })
     // const strippedHost = trailing ? host.slice(0, -1) : host
@@ -175,7 +174,6 @@ describe.each([
   })
 
   test(`Test updateSearchableAttributes route`, async () => {
-    // @TODO
     // const route = `indexes/${index.uid}/settings/searchable-attributes`
     const client = new MeiliSearch({ host })
     // const strippedHost = trailing ? host.slice(0, -1) : host
@@ -189,7 +187,6 @@ describe.each([
   })
 
   test(`Test resetSearchableAttributes route`, async () => {
-    // @TODO
     // const route = `indexes/${index.uid}/settings/searchable-attributes`
     const client = new MeiliSearch({ host })
     // const strippedHost = trailing ? host.slice(0, -1) : host

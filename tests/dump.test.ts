@@ -56,7 +56,6 @@ describe.each([
   { host: `${BAD_HOST}/trailing/`, trailing: true },
 ])('Tests on url construction', ({ host /*, trailing*/ }) => {
   test(`Test createDump route`, async () => {
-    // @TODO: fix broken test
     // const route = `dumps`
     const client = new MeiliSearch({ host })
     // const strippedHost = trailing ? host.slice(0, -1) : host
